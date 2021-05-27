@@ -1,0 +1,10 @@
+<div class="text-left">
+  <h3>Weather in:</h3>
+  <ol class="cityWeatherList">
+    <li *ngFor="let cityWeather of cityWeatherList">
+      {{ cityWeather.city }}&nbsp;
+      {{ cityWeather.temp | tempConverter: cityWeather.unit }}; &nbsp;&nbsp;
+      {{ cityWeather.weather }}&nbsp;
+    </li>
+  </ol>
+</div>

@@ -1,0 +1,36 @@
+<div class="mt-4">
+  <form
+    [formGroup]="weatherForm"
+    (ngSubmit)="sendValue()"
+    class="form-inline mb-4"
+    novalidate
+  >
+    <div class="input-group mb-2 mr-sm-2">
+      <select class="form-control" formControlName="city" title="Choose City">
+        <option class="custOpt">Choose City</option>
+        <option *ngFor="let city of citiesList$ | async">{{ city }}</option>
+      </select>
+
+      &nbsp;
+      <input
+        type="text"
+        class="form-control"
+        formControlName="units"
+        placeholder="Units(standard,metric)"
+      />
+      &nbsp;
+      <button type="submit" class="btn btn-lg btn-light">+</button>
+    </div>
+  </form>
+
+  <ul>
+    <li *ngFor="let city of curentCity">
+      {{ city.city }}&nbsp; {{ city.temp | tempConverter: city.unit }};
+      &nbsp;&nbsp; &nbsp;
+      <i
+        class="{{ city.weather | weatherIcon: city.weather }}"
+        style="font-size: 36px; color: orange"
+      ></i>
+    </li>
+  </ul>
+</div>
